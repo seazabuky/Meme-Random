@@ -18,7 +18,7 @@ public class TestAPI {
         frame.setResizable(false);
         frame.setVisible(true);
      }catch(Exception e){
-         System.out.println(e);
+        e.printStackTrace();
      }
 
 }
