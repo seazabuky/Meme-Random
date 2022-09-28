@@ -31,18 +31,20 @@ public class TestAPI {
         if(input==null){
             throw new Exception("exit");
         }
-         if(input.equals("")){
-               update();
-            }else if(input.equals("exit")){
+      if(input.equals("exit")){
                System.exit(0);
                break;
-        }else if(input.equals("p")){
+        }else if(input.equals("n")){
+            next();
+        }
+        else if(input.equals("p")){
             previous();
         }
-        else{
-               input=input.toLowerCase().replace(" ","-");
+        else if(input.equals("t")){
+               String tag = JOptionPane.showInputDialog("Input Tags");
+               tag=tag.toLowerCase().replace(" ","-");
                System.out.println(input);
-               urlContent = new UrlContent(API_KEY,input);
+               urlContent = new UrlContent(API_KEY,tag);
                update();
         }
       }
@@ -68,6 +70,20 @@ public class TestAPI {
       label.setIcon(icon);
       frame.pack();
    }
+   public static void next() throws MalformedURLException, Exception{
+      if(list.getNext() != null){
+      list.findNext();
+      String temp = (String)list.retrive();
+      url = new URL(temp);
+      System.out.println(temp);
+      icon = new ImageIcon(url);
+      label.setIcon(icon);
+      frame.pack();
+      }else{
+         update();
+      }
+   }
+
 }
 
 

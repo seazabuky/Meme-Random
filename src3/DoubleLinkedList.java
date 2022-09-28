@@ -104,5 +104,8 @@ current = first;}
     public boolean findKey(Object tKey){
         return  this.equals(tKey);
     }
+    public Object getNext(){
+        return current.getNextNode();
+    }
 }
  
