@@ -43,22 +43,17 @@ public class DoubleLinkedList implements ListADT {
 
     @Override
     public void delete() throws Exception {
-        DoubleMyNode previous;
         if (isEmpty()){
             throw new Exception("List is empty");
         }else{
-            previous=first;
-            if(previous==current && current.getNextNode()==null){
+            if(first==current && current.getNextNode()==null){
                 first=current=null;
-            }else if(previous==current && current.getNextNode()!=null){
+            }else if(first==current && current.getNextNode()!=null){
                 first=first.getNextNode();
                 current=first;
             }else{
-                while(previous.getNextNode()!=current){
-                    previous=previous.getNextNode();
-                }
-                previous.setNextNode(current.getNextNode());
-                current.getNextNode().setPreviousNode(previous);
+                current.getPreviousNode.setNextNode(current.getNextNode());
+                current.getNextNode().setPreviousNode(current.getPreviousNode);
                 current=first;
             }
         }
