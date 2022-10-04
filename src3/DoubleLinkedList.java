@@ -1,5 +1,4 @@
 public class DoubleLinkedList implements ListADT {
-    Object e;
     DoubleMyNode first,current;
     int size;
     
