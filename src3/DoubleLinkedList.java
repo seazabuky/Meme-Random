@@ -51,8 +51,8 @@ public class DoubleLinkedList implements ListADT {
                 first=first.getNextNode();
                 current=first;
             }else{
-                current.getPreviousNode.setNextNode(current.getNextNode());
-                current.getNextNode().setPreviousNode(current.getPreviousNode);
+                current.getPreviousNode().setNextNode(current.getNextNode());
+                current.getNextNode().setPreviousNode(current.getPreviousNode());
                 current=first;
             }
         }
