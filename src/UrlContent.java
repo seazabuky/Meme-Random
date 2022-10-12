@@ -5,7 +5,7 @@ import java.net.URL;
 
 public class UrlContent{
     URL url;
-    String API_KEY,tags,status,link;
+    String API_KEY,tags,status = "0",link;
         public UrlContent(String APIKEY, String tag) throws MalformedURLException,Exception{
             this.API_KEY = APIKEY;
             this.tags = tag;
@@ -24,14 +24,14 @@ public class UrlContent{
                 apiContent = apiContent + inputLine;
             in.close();
             
-            //System.out.println(apiContent);
             status = apiContent.substring(apiContent.indexOf("\"meta\":{"));
             status = status.substring(status.indexOf("\"status\":")+9,status.indexOf(",\"response_id\":"));
             if (checkStatus()){
             apiContent = apiContent.substring(apiContent.indexOf("\"original\":{"),apiContent.indexOf("\"original_still\":{"));
-            apiContent = apiContent.substring(apiContent.indexOf("\"url\":\"")+7,apiContent.indexOf("\",\"webp\":")).replace("\\","");
+            apiContent = apiContent.substring(apiContent.indexOf("\"url\":\""),apiContent.indexOf("\",\"webp\":")).replace("\\","");
             apiContent = apiContent.substring(apiContent.indexOf("media/"));
             apiContent = "https://i.giphy.com/"+apiContent;
+            System.out.println(apiContent);
             this.link = apiContent;
             return apiContent;
         }else

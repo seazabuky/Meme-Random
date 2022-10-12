@@ -45,7 +45,6 @@ public class TestAPI {
         else if(input.equals("t")){
                String tag = JOptionPane.showInputDialog("Input Tags");
                tag=tag.toLowerCase().replace(" ","-");
-               System.out.println(input);
                urlContent = new UrlContent(API_KEY,tag);
                list.findLast();
                update();
@@ -79,14 +78,12 @@ public class TestAPI {
       list.findNext();
       String temp = (String)list.retrieve();
       url = new URL(temp);
-      System.out.println("if");
       icon = new ImageIcon(url);
       label.setIcon(icon);
       frame.pack();
-      }else{
+      }else
          update();
-         System.out.println("else");
-      }
+      
    }
 
 }
