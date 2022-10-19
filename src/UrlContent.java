@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 public class UrlContent{
     URL url;
     String API_KEY,tags,status = "0",link;

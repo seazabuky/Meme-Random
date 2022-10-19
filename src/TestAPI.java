@@ -1,10 +1,13 @@
+/*
+ @author saltswater
+ */
 import javax.swing.*;
 import java.net.*;
-import java.awt.Desktop;
+import java.awt.*;
 
 
 
-public class TestAPI {
+public class TestAPI{
    static UrlContent urlContent;
    static String API_KEY;
    static URL  url;
@@ -16,7 +19,9 @@ public class TestAPI {
     public static void main(String[] args) throws Exception, MalformedURLException {
         try{
          String input = "";
-         API_KEY = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM"; 
+         API_KEY = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM";
+        
+        //Image zone
         urlContent = new UrlContent(API_KEY);
         url = new URL(urlContent.getURL());
         list.insert(urlContent.getLink());
@@ -24,10 +29,25 @@ public class TestAPI {
         label = new JLabel(icon);
         frame = new JFrame("Meme random");
         frame.getContentPane().add(label);
+
+        //button zone
+        // JPanel panel = new JPanel();
+        // Button previous = new Button("Previous");
+        // Button changeTag = new Button("Change tag");
+        // Button next = new Button("Next");
+        // panel.add(previous);
+        // panel.add(changeTag);
+        // panel.add(next);
+
+        //Adding to Frame
+        // frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        // frame.getContentPane().add(BorderLayout.CENTER, label);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+        frame.setSize(1080,720);
         frame.setResizable(false);
         frame.setVisible(true);
+        
+
         while(true){
         input = JOptionPane.showInputDialog("Input");
         if(input==null){
@@ -63,7 +83,8 @@ public class TestAPI {
       list.insert(urlContent.getLink());
       icon = new ImageIcon(url);
       label.setIcon(icon);
-      frame.pack();
+      frame.getContentPane().add(label);
+      frame.setVisible(true);
    }
    public static void previous() throws MalformedURLException, Exception{
       list.findPrevious();
@@ -71,7 +92,8 @@ public class TestAPI {
       url = new URL(temp);
       icon = new ImageIcon(url);
       label.setIcon(icon);
-      frame.pack();
+      frame.getContentPane().add(label);
+      frame.setVisible(true);
    }
    public static void next() throws MalformedURLException, Exception{
       if(list.getNext() != null){
@@ -80,7 +102,8 @@ public class TestAPI {
       url = new URL(temp);
       icon = new ImageIcon(url);
       label.setIcon(icon);
-      frame.pack();
+      frame.getContentPane().add(label);
+      frame.setVisible(true);
       }else
          update();
       
