@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;   
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -56,8 +57,8 @@ public class MemeRandom implements ActionListener{
         });
         changeTagBtn = new JButton("Change tag");
         changeTagBtn.setFocusable(false);
-        changeTagBtn.setBackground ( Color.BLACK );
-        changeTagBtn.setForeground ( Color.WHITE );
+        changeTagBtn.setBackground (new Color(0,0,0));
+        changeTagBtn.setForeground (new Color(255,255,255));
         changeTagBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
@@ -73,8 +74,8 @@ public class MemeRandom implements ActionListener{
         });
         nextBtn = new JButton("Next");
         nextBtn.setFocusable(false);
-        nextBtn.setBackground ( Color.BLACK );
-        nextBtn.setForeground ( Color.WHITE );
+        nextBtn.setBackground (new Color(0,0,0));
+        nextBtn.setForeground (new Color(255,255,255));
         nextBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
@@ -89,8 +90,7 @@ public class MemeRandom implements ActionListener{
         ImageIcon icon = new ImageIcon("res/share.png");
         urlBtn.setFocusable(false);
         urlBtn.setIcon(icon);
-        urlBtn.setContentAreaFilled(false);
-        urlBtn.setBorderPainted(true);
+        urlBtn.setBackground(new Color(255,255,255));
         urlBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
@@ -105,8 +105,6 @@ public class MemeRandom implements ActionListener{
                 }
              }
         });
-
-
         panelB.add(previousBtn);
         panelB.add(changeTagBtn);
         panelB.add(nextBtn);
@@ -117,36 +115,11 @@ public class MemeRandom implements ActionListener{
         frame.getContentPane().add( BorderLayout.EAST, panelE);
         frame.getContentPane().add(BorderLayout.SOUTH, panelB);
         frame.getContentPane().add(BorderLayout.CENTER, label);
+        randomColor();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(800, 600));
         frame.setResizable(false);
         frame.setVisible(true);
-        
-
-//         while(true){
-//         input = JOptionPane.showInputDialog("Input");
-//         if(input==null){
-//             throw new Exception("exit");
-//         }
-//       if(input.equals("exit")){
-//                System.exit(0);
-//                break;
-//         }else if(input.equals("n")){
-//             next();
-//         }
-//         else if(input.equals("p")){
-//             previous();
-//         }
-//         else if(input.equals("t")){
-//                String tag = JOptionPane.showInputDialog("Input Tags");
-//                tag=tag.toLowerCase().replace(" ","-");
-//                urlContent = new UrlContent(API_KEY,tag);
-//                list.findLast();
-//                update();
-//         }else if(input.equals("url")){
-//             desk.browse(new URI((String)list.retrieve()));
-//   }
-//       }
       }catch(Exception e){
           JOptionPane.showMessageDialog(null, e.getMessage());
           System.exit(0);
@@ -164,6 +137,7 @@ public class MemeRandom implements ActionListener{
    public static void previous() throws MalformedURLException, Exception{
       click--;
       checkClick();
+      randomColor();
       list.findPrevious();
       String temp = (String)list.retrieve();
       url = new URL(temp);
@@ -175,6 +149,7 @@ public class MemeRandom implements ActionListener{
    public static void next() throws MalformedURLException, Exception{
       click++;
       checkClick();
+      randomColor();
       if(list.getNext() != null){
       list.findNext();
       String temp = (String)list.retrieve();
@@ -203,6 +178,16 @@ public void actionPerformed(ActionEvent e) {
     
 }
 
+private static void randomColor(){
+    Random rand = new Random();
+    int r = rand.nextInt(255);
+    int g = rand.nextInt(255);
+    int b = rand.nextInt(255);
+    Color randomColor = new Color(r,g,b);
+    panelB.setBackground(randomColor);
+    panelE.setBackground(randomColor);
+    frame.getContentPane().setBackground(randomColor);
+}
 
 }
 
