@@ -6,6 +6,10 @@ import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 
 
 public class MemeRandom implements ActionListener{
@@ -90,7 +94,12 @@ public class MemeRandom implements ActionListener{
         urlBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
-                    desk.browse(new URI(urlContent.getLink()));
+                    // desk.browse(new URI(urlContent.getLink()));
+                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+		            Clipboard clipboard = toolkit.getSystemClipboard();
+		            StringSelection strSel = new StringSelection(urlContent.getLink());
+		            clipboard.setContents(strSel, null);
+                    JOptionPane.showMessageDialog(null,"Link copied to clipboard");
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
