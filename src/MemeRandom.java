@@ -46,6 +46,8 @@ public class MemeRandom implements ActionListener{
         previousBtn.setFocusable(false);
         previousBtn.setBackground ( Color.BLACK );
         previousBtn.setForeground ( Color.WHITE );
+        previousBtn.setOpaque(true);
+        previousBtn.setBorderPainted(false);
         previousBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
@@ -59,6 +61,8 @@ public class MemeRandom implements ActionListener{
         changeTagBtn.setFocusable(false);
         changeTagBtn.setBackground (new Color(0,0,0));
         changeTagBtn.setForeground (new Color(255,255,255));
+        changeTagBtn.setOpaque(true);
+        changeTagBtn.setBorderPainted(false);
         changeTagBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
@@ -76,6 +80,8 @@ public class MemeRandom implements ActionListener{
         nextBtn.setFocusable(false);
         nextBtn.setBackground (new Color(0,0,0));
         nextBtn.setForeground (new Color(255,255,255));
+        nextBtn.setOpaque(true);
+        nextBtn.setBorderPainted(false);
         nextBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
