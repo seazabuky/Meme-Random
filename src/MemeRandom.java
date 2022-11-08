@@ -31,7 +31,7 @@ public class MemeRandom implements ActionListener{
         
         //Image zone
         urlContent = new UrlContent(API_KEY);
-        url = new URL(urlContent.getURL());
+        url = new URL(urlContent.requestImage());
         list.insert(urlContent.getLink());
         icon = new ImageIcon(url);
         label = new JLabel(icon);
@@ -127,7 +127,7 @@ public class MemeRandom implements ActionListener{
    }
      
      public static void update() throws MalformedURLException, Exception{
-      url = new URL(urlContent.getURL());
+      url = new URL(urlContent.requestImage());
       list.insert(urlContent.getLink());
       icon = new ImageIcon(url);
       label.setIcon(icon);
