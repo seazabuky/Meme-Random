@@ -36,7 +36,7 @@ public class MemeRandom implements ActionListener{
         icon = new ImageIcon(url);
         label = new JLabel(icon);
         frame = new JFrame("Meme random");
-        // frame.getContentPane().add(label);
+
 
         //button zone
         panelB = new JPanel();
@@ -54,6 +54,7 @@ public class MemeRandom implements ActionListener{
                 previous();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());
+                    System.exit(0);
                 }
              }
         });
@@ -144,8 +145,10 @@ public class MemeRandom implements ActionListener{
       click--;
       checkClick();
       randomColor();
+      urlContent.netIsAvailable();
       list.findPrevious();
       String temp = (String)list.retrieve();
+      urlContent.netIsAvailable();
       url = new URL(temp);
       icon = new ImageIcon(url);
       label.setIcon(icon);
@@ -156,6 +159,7 @@ public class MemeRandom implements ActionListener{
       click++;
       checkClick();
       randomColor();
+      urlContent.netIsAvailable();
       if(list.getNext() != null){
       list.findNext();
       String temp = (String)list.retrieve();
@@ -166,6 +170,7 @@ public class MemeRandom implements ActionListener{
       frame.setVisible(true);
       }else
          update();
+    
    }
    
    public static void checkClick(){

@@ -1,7 +1,12 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+
+import javax.swing.JOptionPane;
+
 import org.json.*;
 public class UrlContent{
     URL url;
@@ -10,33 +15,35 @@ public class UrlContent{
         public UrlContent(String APIKEY, String tag) throws MalformedURLException,Exception{
             this.API_KEY = APIKEY;
             this.tags = tag;
-            url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+APIKEY+"&tag="+tag+"&rating=r");
+            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+APIKEY+"&tag="+tag+"&rating=r");
+            if(!netIsAvailable())
+                throw new Exception("Error: Please check your internet connection");
         }
         public UrlContent(String APIKEY) throws Exception{
             this(APIKEY,"meme");
         }
         public String requestImage()throws Exception{
             try{
-                BufferedReader in = new BufferedReader(
-                new InputStreamReader(url.openStream()));
-                
+                netIsAvailable();
+                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
                 String inputLine,apiContent="";
                 while ((inputLine = in.readLine()) != null)
                     apiContent = apiContent + inputLine;
                 in.close();
-                
                 JSONObject obj = new JSONObject(apiContent);
                 link = obj.getJSONObject("data").getJSONObject("images").getJSONObject("original").getString("url");
                 link=link.substring(link.indexOf("media/"));
                 link="https://i.giphy.com/"+link;
                 status = obj.getJSONObject("meta").getInt("status");
-
+                
                 if (checkStatus()){
                     return this.link;
                 }else
                     throw new Exception("Status: "+status);
+            
             }catch(Exception e){
-                System.out.println(e);
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                System.exit(0);
                 return null;
             }
         }
@@ -88,6 +95,19 @@ public class UrlContent{
         }
         public String getAPIKEY(){
             return this.API_KEY;
+        }
+        public boolean netIsAvailable() throws Exception {
+            try {
+                URL urlTest = new URL("http://www.google.com");
+                final URLConnection conn =urlTest.openConnection();
+                conn.connect();
+                conn.getInputStream().close();
+                return true;
+            } catch (MalformedURLException e) {
+                throw new Exception("Error: Please check your internet connection");
+            } catch (IOException e) {
+                throw new Exception("Error: Please check your internet connection");
+            }
         }
 
             
