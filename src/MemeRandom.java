@@ -132,7 +132,7 @@ public class MemeRandom implements ActionListener{
           System.exit(0);
       }
    }
-     
+     //update frame
      public static void update() throws MalformedURLException, Exception{
       url = new URL(urlContent.requestImage());
       list.insert(urlContent.getLink());
@@ -141,6 +141,7 @@ public class MemeRandom implements ActionListener{
       frame.getContentPane().add(label);
       frame.setVisible(true);
    }
+   //click to previous image
    public static void previous() throws MalformedURLException, Exception{
       click--;
       checkClick();
@@ -155,6 +156,7 @@ public class MemeRandom implements ActionListener{
       frame.getContentPane().add(label);
       frame.setVisible(true);
    }
+   //click to next image
    public static void next() throws MalformedURLException, Exception{
       click++;
       checkClick();
@@ -172,7 +174,7 @@ public class MemeRandom implements ActionListener{
          update();
     
    }
-   
+   //check click for show previous 
    public static void checkClick(){
     if(click==0){
         previousBtn.setVisible(false);
@@ -188,7 +190,7 @@ public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
     
 }
-
+//random colorBG
 private static void randomColor(){
     Random rand = new Random();
     int r = rand.nextInt(255);
