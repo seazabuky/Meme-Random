@@ -96,10 +96,12 @@ public class DoubleLinkedList implements ListADT {
     public boolean isFull() {
         return false;
     }
-
     @Override
     public boolean findKey(Object tKey){
         return  this.equals(tKey);
+    }
+    public boolean checkAtFirst(){
+        return current == first;
     }
     public Object getNext(){
         return current.getNextNode();

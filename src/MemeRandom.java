@@ -24,7 +24,6 @@ public class MemeRandom implements ActionListener{
     static JFrame frame;
     static DoubleLinkedList list = new DoubleLinkedList();
     static Desktop desk=Desktop.getDesktop();
-    static int click=0;
     public static void main(String[] args) throws Exception, MalformedURLException{
         try{
          API_KEY = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM";
@@ -70,8 +69,13 @@ public class MemeRandom implements ActionListener{
                     String tag = JOptionPane.showInputDialog("Input Tags");
                     tag=tag.toLowerCase().replace(" ","-");
                     urlContent = new UrlContent(API_KEY,tag);
-                    list.findLast();
-                    update();
+                    if(list.checkAtFirst()&&list.retrieve()==null)
+                        update();
+                    else{
+                        list.findLast();
+                        update();
+                    }
+                    checkClick();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
@@ -101,7 +105,6 @@ public class MemeRandom implements ActionListener{
         urlBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try{
-                    // desk.browse(new URI(urlContent.getLink()));
                     Toolkit toolkit = Toolkit.getDefaultToolkit();
 		            Clipboard clipboard = toolkit.getSystemClipboard();
 		            StringSelection strSel = new StringSelection(urlContent.getLink());
@@ -134,6 +137,8 @@ public class MemeRandom implements ActionListener{
    }
      //call this to show new image and store to list
      public static void update() throws MalformedURLException, Exception{
+      randomColor();
+      urlContent.netIsAvailable();
       url = new URL(urlContent.requestImage());
       list.insert(urlContent.getLink());
       icon = new ImageIcon(url);
@@ -143,8 +148,6 @@ public class MemeRandom implements ActionListener{
    }
    //call this to show previous image
    public static void previous() throws MalformedURLException, Exception{
-      click--;
-      checkClick();
       randomColor();
       urlContent.netIsAvailable();
       list.findPrevious();
@@ -155,14 +158,13 @@ public class MemeRandom implements ActionListener{
       label.setIcon(icon);
       frame.getContentPane().add(label);
       frame.setVisible(true);
+      checkClick();
    }
    //call this to show next image if last image use update method to show new image
    public static void next() throws MalformedURLException, Exception{
-      click++;
-      checkClick();
-      randomColor();
       urlContent.netIsAvailable();
       if(list.getNext() != null){
+      randomColor();
       list.findNext();
       String temp = (String)list.retrieve();
       url = new URL(temp);
@@ -171,12 +173,13 @@ public class MemeRandom implements ActionListener{
       frame.getContentPane().add(label);
       frame.setVisible(true);
       }else
-         update();
+        update();
+      checkClick();
     
    }
    //check click for show previousBTN
    public static void checkClick(){
-    if(click==0){
+    if(list.checkAtFirst()){
         previousBtn.setVisible(false);
         previousBtn.setEnabled(false);
     }else{
