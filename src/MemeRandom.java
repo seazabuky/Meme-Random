@@ -118,7 +118,7 @@ public class MemeRandom implements ActionListener{
         panelE.add(urlBtn);
         checkClick();
 
-        //Adding to Frame
+        //Add Buttons to Frame
         frame.getContentPane().add( BorderLayout.EAST, panelE);
         frame.getContentPane().add(BorderLayout.SOUTH, panelB);
         frame.getContentPane().add(BorderLayout.CENTER, label);
@@ -132,7 +132,7 @@ public class MemeRandom implements ActionListener{
           System.exit(0);
       }
    }
-     //update frame
+     //call this to show new image and store to list
      public static void update() throws MalformedURLException, Exception{
       url = new URL(urlContent.requestImage());
       list.insert(urlContent.getLink());
@@ -141,7 +141,7 @@ public class MemeRandom implements ActionListener{
       frame.getContentPane().add(label);
       frame.setVisible(true);
    }
-   //click to previous image
+   //call this to show previous image
    public static void previous() throws MalformedURLException, Exception{
       click--;
       checkClick();
@@ -156,7 +156,7 @@ public class MemeRandom implements ActionListener{
       frame.getContentPane().add(label);
       frame.setVisible(true);
    }
-   //click to next image
+   //call this to show next image if last image use update method to show new image
    public static void next() throws MalformedURLException, Exception{
       click++;
       checkClick();
@@ -174,7 +174,7 @@ public class MemeRandom implements ActionListener{
          update();
     
    }
-   //check click for show previous 
+   //check click for show previousBTN
    public static void checkClick(){
     if(click==0){
         previousBtn.setVisible(false);
