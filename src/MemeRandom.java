@@ -69,7 +69,7 @@ public class MemeRandom implements ActionListener{
                     String tag = JOptionPane.showInputDialog("Input Tags");
                     tag=tag.toLowerCase().replace(" ","-");
                     urlContent = new UrlContent(API_KEY,tag);
-                    if(list.checkAtFirst()&&list.retrieve()==null)
+                    if(list.checkAtFirst()&&list.getNext()==null)
                         update();
                     else{
                         list.findLast();
