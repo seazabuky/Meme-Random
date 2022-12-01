@@ -16,7 +16,7 @@ public class UrlContent{
             this.API_KEY = APIKEY;
             this.tags = tag;
             //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+APIKEY+"&s="+this.tags);
-            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+APIKEY+"&tag="+tags+"&rating=R");
+            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+APIKEY+"&tag="+tags+"&rating=r");
             if(!netIsAvailable())
                 throw new Exception("Error: Please check your internet connection");
         }
