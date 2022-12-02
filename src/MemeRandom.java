@@ -3,15 +3,16 @@
  */
 import javax.swing.*;
 import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.util.Random;   
 
+//import awt
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.event.*;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-
-
 
 public class MemeRandom implements ActionListener{
     static UrlContent urlContent;
@@ -67,7 +68,6 @@ public class MemeRandom implements ActionListener{
                 try{
                     String tag = JOptionPane.showInputDialog("Input Tags");
                     tag=tag.toLowerCase().replace(" ","+");
-                    System.out.print(tag);
                     urlContent = new UrlContent(API_KEY,tag);
                     if(list.checkAtFirst()&&list.getNext()==null)
                         update();
