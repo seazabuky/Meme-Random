@@ -88,7 +88,7 @@ public class DoubleLinkedList implements ListADT {
     public void findPrevious() throws Exception {
         if(isEmpty()){
             throw new Exception("List is empty");
-        }else if(current.getPreviousNode() == null){throw new Exception("Not have a next node");}
+        }else if(current.getPreviousNode() == null){throw new Exception("Not have a previous node");}
     else{current = current.getPreviousNode();}}
 
 
