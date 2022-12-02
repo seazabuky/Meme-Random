@@ -23,7 +23,6 @@ public class MemeRandom implements ActionListener{
     static JLabel label;
     static JFrame frame;
     static DoubleLinkedList list = new DoubleLinkedList();
-    static Desktop desk=Desktop.getDesktop();
     public static void main(String[] args) throws Exception, MalformedURLException{
         try{
          API_KEY = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM";
