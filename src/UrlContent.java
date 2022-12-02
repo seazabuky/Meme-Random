@@ -10,18 +10,18 @@ import javax.swing.JOptionPane;
 import org.json.*;
 public class UrlContent{
     URL url;
-    String API_KEY,tags,link;
+    String api_key,tags,link;
     int status=0;
-        public UrlContent(String APIKEY, String tag) throws MalformedURLException,Exception{
-            this.API_KEY = APIKEY;
+        public UrlContent(String apikey, String tag) throws MalformedURLException,Exception{
+            this.api_key = apikey;
             this.tags = tag;
-            //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+APIKEY+"&s="+this.tags);
-            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+APIKEY+"&tag="+tags+"&rating=r");
+            //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+apikey+"&s="+this.tags);
+            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+apikey+"&tag="+tags+"&rating=r");
             if(!netIsAvailable())
                 throw new Exception("Error: Please check your internet connection");
         }
-        public UrlContent(String APIKEY) throws Exception{
-            this(APIKEY,"meme");
+        public UrlContent(String apikey) throws Exception{
+            this(apikey,"meme");
         }
         public String requestImage()throws Exception{
             try{
@@ -91,11 +91,11 @@ public class UrlContent{
         public String getTags(){
             return this.tags;
         }
-        public void setNewAPIKEY(String APIKEY){
-            this.API_KEY = APIKEY;
+        public void setNewapikey(String apikey){
+            this.api_key = apikey;
         }
-        public String getAPIKEY(){
-            return this.API_KEY;
+        public String getapikey(){
+            return this.api_key;
         }
         public boolean netIsAvailable() throws Exception {
             try {

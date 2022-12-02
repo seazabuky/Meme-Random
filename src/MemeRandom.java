@@ -16,7 +16,7 @@ import java.awt.datatransfer.StringSelection;
 
 public class MemeRandom implements ActionListener{
     static UrlContent urlContent;
-    static String API_KEY;
+    static String api_key;
     static URL  url;
     static Icon icon;
     static JPanel panelB,panelE;
@@ -26,10 +26,10 @@ public class MemeRandom implements ActionListener{
     static DoubleLinkedList list = new DoubleLinkedList();
     public static void main(String[] args) throws Exception, MalformedURLException{
         try{
-         API_KEY = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM";
+         api_key = "GYeHAfTxIoSwKJYD2tsY6XVfT1Q0yZfM";
         
         //Image zone
-        urlContent = new UrlContent(API_KEY);
+        urlContent = new UrlContent(api_key);
         url = new URL(urlContent.requestImage());
         list.insert(urlContent.getLink());
         icon = new ImageIcon(url);
@@ -68,7 +68,7 @@ public class MemeRandom implements ActionListener{
                 try{
                     String tag = JOptionPane.showInputDialog("Input Tags");
                     tag=tag.toLowerCase().replace(" ","+");
-                    urlContent = new UrlContent(API_KEY,tag);
+                    urlContent = new UrlContent(api_key,tag);
                     if(list.checkAtFirst()&&list.getNext()==null)
                         update();
                     else{
