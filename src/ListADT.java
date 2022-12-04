@@ -1,5 +1,4 @@
 interface ListADT {
-    public void List();
     
     public void insert(Object e) throws Exception;
 

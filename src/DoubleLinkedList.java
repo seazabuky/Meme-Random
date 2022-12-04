@@ -3,10 +3,6 @@ public class DoubleLinkedList implements ListADT {
     private int size;
     
     public DoubleLinkedList(){
-        List();
-    }
-
-    public void List() {
         first=current=last=null;
         size = 0;
     }
