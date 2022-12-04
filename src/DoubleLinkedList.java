@@ -81,21 +81,26 @@ public class DoubleLinkedList implements ListADT {
         }else if(current.getNextNode() == null){throw new Exception("Not have a next node");}
         else{current = current.getNextNode();}
     }
+    @Override
     public void findPrevious() throws Exception {
         if(isEmpty()){
             throw new Exception("List is empty");
         }else if(current.getPreviousNode() == null){throw new Exception("Not have a previous node");}
     else{current = current.getPreviousNode();}}
 
+    @Override
     public boolean checkAtFirst(){
         return current == first;
     }
+    @Override
     public Object getNext(){
         return current.getNextNode();
     }
+    @Override
     public void findLast(){
         current = last;
     }
+    @Override
     public int getSize(){
         return size;
     }

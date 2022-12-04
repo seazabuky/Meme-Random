@@ -14,4 +14,13 @@ interface ListADT {
 
     public void findNext() throws Exception;
 
+    public void findPrevious() throws Exception;
+
+    public boolean checkAtFirst();
+
+    public Object getNext();
+
+    public void findLast();
+
+    public int getSize();
 }
