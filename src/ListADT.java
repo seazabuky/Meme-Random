@@ -14,7 +14,4 @@ interface ListADT {
 
     public void findNext() throws Exception;
 
-    public boolean isFull();
-
-    public boolean findKey(Object tKey);
 }

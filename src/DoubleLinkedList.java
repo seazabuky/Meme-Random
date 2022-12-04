@@ -87,15 +87,6 @@ public class DoubleLinkedList implements ListADT {
         }else if(current.getPreviousNode() == null){throw new Exception("Not have a previous node");}
     else{current = current.getPreviousNode();}}
 
-
-    @Override
-    public boolean isFull() {
-        return false;
-    }
-    @Override
-    public boolean findKey(Object tKey){
-        return  this.equals(tKey);
-    }
     public boolean checkAtFirst(){
         return current == first;
     }
