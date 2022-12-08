@@ -16,7 +16,7 @@ public class UrlContent{
             this.api_key = apikey;
             this.tags = tag;
             //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+apikey+"&s="+this.tags);
-            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+apikey+"&tag="+tags+"&rating=r");
+            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+this.api_key+"&tag="+this.tags+"&rating=r");
             if(!netIsAvailable())
                 throw new Exception("Error: Please check your internet connection");
         }
@@ -85,8 +85,10 @@ public class UrlContent{
                     return false;
             }
         }
-        public void setNewTags(String tag){
+        public void setNewTags(String tag) throws MalformedURLException{
             this.tags = tag;
+            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+this.api_key+"&tag="+this.tags+"&rating=r");
+            System.out.println("New tags: "+this.tags);
         }
         public String getTags(){
             return this.tags;

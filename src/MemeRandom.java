@@ -1,6 +1,4 @@
-/*
- @author saltswater
- */
+
 import javax.swing.*;
 import java.net.*;
 import java.util.Random;   
@@ -68,7 +66,7 @@ public class MemeRandom implements ActionListener{
                 try{
                     String tag = JOptionPane.showInputDialog("Input Tags");
                     tag=tag.toLowerCase().replace(" ","+");
-                    urlContent = new UrlContent(api_key,tag);
+                    urlContent.setNewTags(tag);
                     if(list.checkAtFirst()&&list.getNext()==null)
                         update();
                     else{
