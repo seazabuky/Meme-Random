@@ -15,8 +15,6 @@ public class UrlContent{
         public UrlContent(String apikey, String tag) throws MalformedURLException,Exception{
             this.api_key = apikey;
             this.tags = tag;
-            //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+apikey+"&s="+this.tags);
-            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+this.api_key+"&tag="+this.tags+"&rating=r");
             if(!netIsAvailable())
                 throw new Exception("Error: Please check your internet connection");
         }
@@ -25,6 +23,8 @@ public class UrlContent{
         }
         public String requestImage()throws Exception{
             try{
+                //this.url = new URL("https://api.giphy.com/v1/gifs/translate?api_key="+apikey+"&s="+this.tags);
+                this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+this.api_key+"&tag="+this.tags+"&rating=r");
                 netIsAvailable();
                 BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
                 String inputLine,apiContent="";
@@ -87,7 +87,6 @@ public class UrlContent{
         }
         public void setNewTags(String tag) throws MalformedURLException{
             this.tags = tag;
-            this.url = new URL("https://api.giphy.com/v1/gifs/random?api_key="+this.api_key+"&tag="+this.tags+"&rating=r");
             System.out.println("New tags: "+this.tags);
         }
         public String getTags(){
